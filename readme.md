@@ -16,13 +16,17 @@
     ```
     will be the password to the DBMS SA's.
 
-4. Locale Code is by default "pt_BR" end ports **80**, **5432**, **10050** and **10051** must be mapped whenever instantiating a container; e.g., using _podman_:
+4. Locale Code is by default "pt_BR" and ports **80**, **5432**, **10050** and **10051** must be mapped whenever instantiating a container; e.g., using _podman_:
     ```
     podman image build -f ./containerfile --build-arg LOC_CODE=en_AU -t zbx-srv-custom:1.00 ./
     podman container run -itd -p 41234:80 -p 41235:5432 -p 41236-41237:10050-10051 zbx-srv-custom:1.00
     ```
 
-5. For this **Zabbix's 1st access**, one needs to follow the [official quickstart guide here](https://www.zabbix.com/documentation/7.0/en/manual/quickstart/login).
+5. For this **Zabbix's 1st access**, one needs to follow the [official quickstart guide here](https://www.zabbix.com/documentation/7.0/en/manual/quickstart/login). In short, go to http://127.0.0.1:41234 in your browser and use the following credentials for Super Admin:
+    ```
+    Login: Admin
+    Password: zabbix
+    ```
 
 6. If one needs to access Zabbix Server's local database, user "zabbix" over the named database "zabbix" can be used, i.e.:
     ```
